@@ -15,6 +15,8 @@ namespace ShopReceipt
             Product.Stream = new FileStream("products.json", FileMode.Open, FileAccess.Read);
 
             this.ProductSelectComboBox.DataSource = (List<Product>?)Product.Serializer.ReadObject(Product.Stream);
+
+            Product.Stream.Close();
         }
 
         /// <summary>
@@ -53,8 +55,35 @@ namespace ShopReceipt
         /// </param>
         private void ProductManageMenuItem_Click(object sender, EventArgs e)
         {
-            Product.Stream.Close();
             new ProductManager().ShowDialog();
+        }
+
+        /// <summary>
+        /// The open config menu item_ click.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void OpenConfigMenuItem_Click(object sender, EventArgs e)
+        {
+            new OpenFileDialog().ShowDialog();
+        }
+
+        /// <summary>
+        /// The save config menu item_ click.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
+        private void SaveConfigMenuItem_Click(object sender, EventArgs e)
+        {
+            new SaveFileDialog().ShowDialog();
         }
     }
 }

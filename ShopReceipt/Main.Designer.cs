@@ -68,14 +68,18 @@
             // OpenConfigMenuItem
             // 
             this.OpenConfigMenuItem.Name = "OpenConfigMenuItem";
-            this.OpenConfigMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.OpenConfigMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.OpenConfigMenuItem.Size = new System.Drawing.Size(180, 22);
             this.OpenConfigMenuItem.Text = "Открыть";
+            this.OpenConfigMenuItem.Click += new System.EventHandler(this.OpenConfigMenuItem_Click);
             // 
             // SaveConfigMenuItem
             // 
             this.SaveConfigMenuItem.Name = "SaveConfigMenuItem";
-            this.SaveConfigMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.SaveConfigMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.SaveConfigMenuItem.Size = new System.Drawing.Size(180, 22);
             this.SaveConfigMenuItem.Text = "Сохранить";
+            this.SaveConfigMenuItem.Click += new System.EventHandler(this.SaveConfigMenuItem_Click);
             // 
             // ProductsManageMenuItem
             // 
@@ -161,7 +165,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.ReceiptDataGridView);
             this.Controls.Add(this.menuStrip1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
             this.Name = "Main";
             this.Text = "Чек";
             this.menuStrip1.ResumeLayout(false);

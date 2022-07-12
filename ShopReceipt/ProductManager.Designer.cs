@@ -107,14 +107,16 @@
             this.PriceColumn.Name = "PriceColumn";
             this.PriceColumn.Width = 150;
             // 
-            // ProductManage
+            // ProductManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.ProductsDataGridView);
             this.Controls.Add(this.groupBox1);
-            this.Name = "ProductManage";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.Name = "ProductManager";
             this.Text = "Склад";
             ((System.ComponentModel.ISupportInitialize)(this.ProductCostNumericUpDown)).EndInit();
             this.groupBox1.ResumeLayout(false);

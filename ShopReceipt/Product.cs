@@ -40,6 +40,7 @@
         /// </returns>
         public static List<Product>? GetAll()
         {
+            Stream.Close();
             var products = new List<Product>();
 
             Stream = new FileStream("products.json", FileMode.OpenOrCreate) { Position = 0 };
