@@ -1,6 +1,6 @@
 ﻿namespace ShopReceipt
 {
-    partial class ProductManage
+    partial class ProductManager
     {
         /// <summary>
         /// Required designer variable.

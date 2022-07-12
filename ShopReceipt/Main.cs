@@ -1,27 +1,10 @@
 namespace ShopReceipt
 {
-    using System.Runtime.Serialization.Json;
-
     /// <summary>
     /// The main.
     /// </summary>
     public partial class Main : Form
     {
-        /// <summary>
-        /// The products.
-        /// </summary>
-        private readonly List<Product>? products;
-
-        /// <summary>
-        /// The serializer.
-        /// </summary>
-        private readonly DataContractJsonSerializer serializer;
-
-        /// <summary>
-        /// The file stream.
-        /// </summary>
-        private readonly FileStream stream;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Main"/> class.
         /// </summary>
@@ -29,11 +12,9 @@ namespace ShopReceipt
         {
             this.InitializeComponent();
 
-            this.stream = new FileStream("products.json", FileMode.Open, FileAccess.Read);
-            this.serializer = new DataContractJsonSerializer(typeof(List<Product>));
-            this.products = (List<Product>?)this.serializer.ReadObject(this.stream);
+            Product.Stream = new FileStream("products.json", FileMode.Open, FileAccess.Read);
 
-            this.ProductSelectComboBox.DataSource = this.products;
+            this.ProductSelectComboBox.DataSource = (List<Product>?)Product.Serializer.ReadObject(Product.Stream);
         }
 
         /// <summary>
@@ -72,8 +53,8 @@ namespace ShopReceipt
         /// </param>
         private void ProductManageMenuItem_Click(object sender, EventArgs e)
         {
-            this.stream.Close();
-            new ProductManage().ShowDialog();
+            Product.Stream.Close();
+            new ProductManager().ShowDialog();
         }
     }
 }
