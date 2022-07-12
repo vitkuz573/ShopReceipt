@@ -2,68 +2,89 @@
 {
     using System.Runtime.Serialization.Json;
 
+    /// <summary>
+    /// The product manage.
+    /// </summary>
     public partial class ProductManage : Form
     {
-        private FileStream _fileStream; 
-        private List<Product>? _products;
-        private readonly DataContractJsonSerializer _dataContractJsonSerializer;
+        /// <summary>
+        /// The serializer.
+        /// </summary>
+        private readonly DataContractJsonSerializer serializer;
 
+        /// <summary>
+        /// The products.
+        /// </summary>
+        private List<Product>? products;
+
+        /// <summary>
+        /// The stream.
+        /// </summary>
+        private FileStream stream;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProductManage"/> class.
+        /// </summary>
         public ProductManage()
         {
-            InitializeComponent();
+            this.InitializeComponent();
 
-            _dataContractJsonSerializer = new DataContractJsonSerializer(typeof(List<Product>));
-            _products = new List<Product>();
+            this.serializer = new DataContractJsonSerializer(typeof(List<Product>));
+            this.products = new List<Product>();
 
-            GetProducts();
+            this.GetProducts();
 
-            /*ProductsDataGridView.DataSource = _products;*/
-
-            if (_products != null)
+            if (this.products != null)
             {
-                foreach (Product product in _products)
+                foreach (var product in this.products)
                 {
-                    ProductsDataGridView.Rows.Add(product.Name, product.Price);
+                    this.ProductsDataGridView.Rows.Add(product.Name, product.Price);
                 }
             }
 
-            _fileStream.Close();
+            this.stream.Close();
         }
 
-        private void GetProducts()
-        {
-            _fileStream = new FileStream("products.json", FileMode.OpenOrCreate)
-            {
-                Position = 0
-            };
-
-            if (_fileStream.Length > 0)
-            {
-                _products = (List<Product>?)_dataContractJsonSerializer.ReadObject(_fileStream);
-            }
-        }
-
+        /// <summary>
+        /// The add product button_ click.
+        /// </summary>
+        /// <param name="sender">
+        /// The sender.
+        /// </param>
+        /// <param name="e">
+        /// The e.
+        /// </param>
         private void AddProductButton_Click(object sender, EventArgs e)
         {
-            GetProducts();
+            this.GetProducts();
 
-            _fileStream.SetLength(0);
+            this.stream.SetLength(0);
 
             var product = new Product()
+                              {
+                                  Name = this.ProductNameTextBox.Text, Price = this.ProductCostNumericUpDown.Value
+                              };
+
+            this.products?.Add(product);
+
+            this.serializer.WriteObject(this.stream, this.products);
+
+            this.ProductsDataGridView.Rows.Add(product.Name, product.Price);
+
+            this.stream.Close();
+        }
+
+        /// <summary>
+        /// The get products.
+        /// </summary>
+        private void GetProducts()
+        {
+            this.stream = new FileStream("products.json", FileMode.OpenOrCreate) { Position = 0 };
+
+            if (this.stream.Length > 0)
             {
-                Name = ProductNameTextBox.Text,
-                Price = ProductCostNumericUpDown.Value
-            };
-
-            _products?.Add(product);
-
-            _dataContractJsonSerializer.WriteObject(_fileStream, _products);
-
-            /*ProductsDataGridView.Refresh();*/
-
-            ProductsDataGridView.Rows.Add(product.Name, product.Price);
-
-            _fileStream.Close();
+                this.products = (List<Product>?)this.serializer.ReadObject(this.stream);
+            }
         }
     }
 }
