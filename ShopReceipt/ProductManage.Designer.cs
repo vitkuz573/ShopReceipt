@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.AddProductButton = new System.Windows.Forms.Button();
             this.ProductNameTextBox = new System.Windows.Forms.TextBox();
             this.ProductCostNumericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -36,11 +35,9 @@
             this.ProductsDataGridView = new System.Windows.Forms.DataGridView();
             this.NameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PriceColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.ProductCostNumericUpDown)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // AddProductButton
@@ -62,7 +59,13 @@
             // 
             // ProductCostNumericUpDown
             // 
+            this.ProductCostNumericUpDown.DecimalPlaces = 2;
             this.ProductCostNumericUpDown.Location = new System.Drawing.Point(25, 51);
+            this.ProductCostNumericUpDown.Maximum = new decimal(new int[] {
+            50000,
+            0,
+            0,
+            0});
             this.ProductCostNumericUpDown.Name = "ProductCostNumericUpDown";
             this.ProductCostNumericUpDown.Size = new System.Drawing.Size(204, 23);
             this.ProductCostNumericUpDown.TabIndex = 2;
@@ -72,7 +75,7 @@
             this.groupBox1.Controls.Add(this.AddProductButton);
             this.groupBox1.Controls.Add(this.ProductCostNumericUpDown);
             this.groupBox1.Controls.Add(this.ProductNameTextBox);
-            this.groupBox1.Location = new System.Drawing.Point(512, 149);
+            this.groupBox1.Location = new System.Drawing.Point(539, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(249, 118);
             this.groupBox1.TabIndex = 3;
@@ -89,7 +92,7 @@
             this.ProductsDataGridView.Location = new System.Drawing.Point(12, 12);
             this.ProductsDataGridView.Name = "ProductsDataGridView";
             this.ProductsDataGridView.RowTemplate.Height = 25;
-            this.ProductsDataGridView.Size = new System.Drawing.Size(459, 426);
+            this.ProductsDataGridView.Size = new System.Drawing.Size(521, 426);
             this.ProductsDataGridView.TabIndex = 5;
             // 
             // NameColumn
@@ -104,10 +107,6 @@
             this.PriceColumn.Name = "PriceColumn";
             this.PriceColumn.Width = 150;
             // 
-            // productBindingSource
-            // 
-            this.productBindingSource.DataSource = typeof(ShopReceipt.Product);
-            // 
             // ProductManage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -121,7 +120,6 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ProductsDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -133,7 +131,6 @@
         private NumericUpDown ProductCostNumericUpDown;
         private GroupBox groupBox1;
         private DataGridView ProductsDataGridView;
-        private BindingSource productBindingSource;
         private DataGridViewTextBoxColumn NameColumn;
         private DataGridViewTextBoxColumn PriceColumn;
     }

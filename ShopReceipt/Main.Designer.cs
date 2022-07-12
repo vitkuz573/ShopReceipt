@@ -68,13 +68,13 @@
             // OpenConfigMenuItem
             // 
             this.OpenConfigMenuItem.Name = "OpenConfigMenuItem";
-            this.OpenConfigMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.OpenConfigMenuItem.Size = new System.Drawing.Size(133, 22);
             this.OpenConfigMenuItem.Text = "Открыть";
             // 
             // SaveConfigMenuItem
             // 
             this.SaveConfigMenuItem.Name = "SaveConfigMenuItem";
-            this.SaveConfigMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.SaveConfigMenuItem.Size = new System.Drawing.Size(133, 22);
             this.SaveConfigMenuItem.Text = "Сохранить";
             // 
             // ProductsManageMenuItem
@@ -88,11 +88,13 @@
             // 
             this.ProductSelectComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ProductSelectComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ProductSelectComboBox.DisplayMember = "Name";
             this.ProductSelectComboBox.FormattingEnabled = true;
             this.ProductSelectComboBox.Location = new System.Drawing.Point(23, 22);
             this.ProductSelectComboBox.Name = "ProductSelectComboBox";
             this.ProductSelectComboBox.Size = new System.Drawing.Size(265, 23);
             this.ProductSelectComboBox.TabIndex = 1;
+            this.ProductSelectComboBox.ValueMember = "Price";
             // 
             // AddToCheckButton
             // 
@@ -138,7 +140,7 @@
             this.groupBox1.Controls.Add(this.AddToCheckButton);
             this.groupBox1.Location = new System.Drawing.Point(12, 39);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(301, 87);
+            this.groupBox1.Size = new System.Drawing.Size(307, 87);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Добавление товара в чек";

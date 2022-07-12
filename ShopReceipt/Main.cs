@@ -16,8 +16,6 @@ namespace ShopReceipt
             dataContractJsonSerializer = new DataContractJsonSerializer(typeof(List<Product>));
             products = (List<Product>?)dataContractJsonSerializer.ReadObject(fileStream);
 
-            ProductSelectComboBox.DisplayMember = "Name";
-            ProductSelectComboBox.ValueMember = "Price";
             ProductSelectComboBox.DataSource = products;
         }
 
@@ -31,11 +29,11 @@ namespace ShopReceipt
         {
             ReceiptDataGridView.Rows.Add(ProductSelectComboBox.Text, ProductSelectComboBox.SelectedValue);
 
-            int totalPrice = 0;
+            decimal totalPrice = 0;
 
             for (int i = 0; i < ReceiptDataGridView.Rows.Count; i++)
             {
-                totalPrice += Convert.ToInt32(ReceiptDataGridView.Rows[i].Cells[1].Value);
+                totalPrice += Convert.ToDecimal(ReceiptDataGridView.Rows[i].Cells[1].Value);
             }
 
             TotalPriceLabel.Text = "Итого: " + totalPrice.ToString() + " рублей";
